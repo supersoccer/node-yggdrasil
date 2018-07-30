@@ -1,18 +1,20 @@
-const $ = require('config')
+const Misty = require('@supersoccer/misty')
+const $ = Misty.Config
 const _ = require('lodash')
 const redis = require('redis')
 
+const APPNAME = 'yggdrasil'
 class Yggdrasil {
   constructor (app, port, host) {
     this.app = app
 
     // Set default settings
-    port = port || $.redis.misty.port
-    host = host || $.redis.misty.host
+    port = port || $.yggdrasil.misty.port
+    host = host || $.yggdrasil.misty.host
 
     this.client = redis.createClient(port, host)
     this.client.on('error', function (err) {
-      console.log('Error ' + err)
+      console.log(`[${APPNAME}] Error ${err}`)
     })
   }
 
@@ -22,11 +24,11 @@ class Yggdrasil {
 
   set (key, value, ttl) {
     if (_.isUndefined(key)) {
-      throw new Error(`${$.app.name} missing 'key' in cache`)
+      throw new Error(`[${APPNAME}] missing 'key'`)
     }
 
     if (_.isUndefined(value)) {
-      throw new Error(`${$.app.name} missing 'value' in cache [key: ${key}]`)
+      throw new Error(`[${APPNAME}] missing 'value' [key: ${key}]`)
     }
 
     key = this.key(key)
@@ -68,7 +70,7 @@ class Yggdrasil {
   del (key) {
     key = this.key(key)
     this.client.del(key)
-    console.log(`[misty] del cache: ${key}`)
+    console.log(`[${APPNAME}] delete ${key}`)
   }
 }
 
