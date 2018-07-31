@@ -1,15 +1,22 @@
 {
   "name": "@supersoccer/yggdrasil",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Cache module",
   "main": "index.js",
   "repository": "https://github.com/supersoccer/node-yggdrasil.git",
   "author": "hkyo89 <hkyo89@yahoo.co.jp>",
   "license": "MIT",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
   "dependencies": {
-    "@supersoccer/misty": "^1.0.1",
+    "@supersoccer/misty": "*",
     "config": "^1.30.0",
     "lodash": "^4.17.10",
     "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "@supersoccer/minako": "*",
+    "jsdoc": "^3.5.5"
   }
 }
