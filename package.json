@@ -1,6 +1,6 @@
 {
   "name": "@supersoccer/yggdrasil",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Cache module",
   "main": "index.js",
   "repository": "https://github.com/supersoccer/node-yggdrasil.git",
@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@supersoccer/misty": "*",
-    "config": "^1.30.0",
-    "lodash": "^4.17.10",
     "redis": "^2.8.0"
   },
   "devDependencies": {

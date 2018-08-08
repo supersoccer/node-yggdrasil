@@ -1,6 +1,5 @@
-const Misty = require('@supersoccer/misty')
-const $ = Misty.Config
-const _ = require('lodash')
+const { Config, Utils } = require('@supersoccer/misty')
+const _ = Utils.Lodash
 const redis = require('redis')
 
 const APPNAME = 'yggdrasil'
@@ -9,8 +8,8 @@ class Yggdrasil {
     this.app = app
 
     // Set default settings
-    port = port || $.yggdrasil.misty.port
-    host = host || $.yggdrasil.misty.host
+    port = port || Config.Yggdrasil.misty.port
+    host = host || Config.Yggdrasil.misty.host
 
     this.client = redis.createClient(port, host)
     this.client.on('error', function (err) {
