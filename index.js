@@ -1,4 +1,4 @@
-const { Config, Utils } = require('@supersoccer/misty')
+const { Config, Utils } = require('@supersoccer/misty-loader')
 const _ = Utils.Lodash
 const redis = require('redis')
 
