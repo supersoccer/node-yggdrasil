@@ -71,6 +71,20 @@ class Yggdrasil {
     this.client.del(key)
     console.log(`[${APPNAME}] delete ${key}`)
   }
+
+  delPrefix (key) {
+    key = this.key(key)
+    this.client.eval("return redis.call('del', unpack(redis.call('keys', ARGV[1])))" , 0, key, function() {
+      console.log(`[${APPNAME}] delete by prefix ${key}`)
+    })
+  }
+
+  mgetPrefix (key) {
+    key = this.key(key)
+    this.client.eval("return redis.call('mget', unpack(redis.call('keys', ARGV[1])))" , 0, key, function() {
+      console.log(`[${APPNAME}] mget by prefix ${key}`)
+    })
+  }
 }
 
 module.exports = Yggdrasil

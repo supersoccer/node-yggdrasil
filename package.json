@@ -1,9 +1,9 @@
 {
   "name": "@supersoccer/yggdrasil",
-  "version": "1.2.1",
+  "version": "1.5.0",
   "description": "Cache module",
   "main": "index.js",
-  "repository": "https://github.com/supersoccer/node-yggdrasil.git",
+  "repository": "git://github.com/supersoccer/node-yggdrasil.git#v1.5.0",
   "author": "hkyo89 <hkyo89@yahoo.co.jp>",
   "license": "MIT",
   "scripts": {
