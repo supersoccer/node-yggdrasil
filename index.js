@@ -81,8 +81,18 @@ class Yggdrasil {
 
   mgetPrefix (key) {
     key = this.key(key)
-    this.client.eval("return redis.call('mget', unpack(redis.call('keys', ARGV[1])))" , 0, key, function() {
-      console.log(`[${APPNAME}] mget by prefix ${key}`)
+    return new Promise((resolve, reject) => {
+      if (_.isUndefined(key)) {
+        return resolve(null)
+      }
+
+      this.client.eval("return redis.call('mget', unpack(redis.call('keys', ARGV[1])))" , 0, key, function(err, reply) {
+        console.log(`[${APPNAME}] mget by prefix ${key}`)
+        if (err) {
+          return reject(err)
+        }
+        return resolve(reply)
+      })
     })
   }
 }
